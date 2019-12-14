@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 })
 export class PostService {
 
-  private URL_POST = '/post';
+  private URL_POST = '/api/post';
 
   constructor(private http: HttpClient) { }
 
@@ -18,5 +18,9 @@ export class PostService {
 
   getAllPosts(): Observable<PostDto[]> {
     return this.http.get<PostDto[]>(this.URL_POST);
+  }
+
+  savePost(postDto: PostDto) {
+    return this.http.post(this.URL_POST, postDto);
   }
 }
